@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { APP_BASE_HREF } from '@angular/common';
 import { DataBindingComponent } from './demos/data-binding/data-binding.component';
+import { ProdutoService } from './produtos/produtos.service';
 
 
 @NgModule({
@@ -30,10 +31,13 @@ import { DataBindingComponent } from './demos/data-binding/data-binding.componen
     FormsModule,
     [RouterModule.forRoot(rootRouterConfig, { useHash: false}) ]
   ],
-  providers: [{
+  providers: [
+    ProdutoService,
+    {
     provide: APP_BASE_HREF,
-    useValue: '/'
-  }],
+    useValue: '/'  
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
