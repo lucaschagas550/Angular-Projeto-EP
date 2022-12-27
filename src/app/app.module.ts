@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './navegacao/menu/menu.component';
@@ -10,10 +11,12 @@ import { SobreComponent } from './institucional/sobre/sobre.component';
 import { ContatoComponent } from './institucional/contato/contato.component';
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
-import { APP_BASE_HREF } from '@angular/common';
+import { APP_BASE_HREF, registerLocaleData } from '@angular/common';
 import { DataBindingComponent } from './demos/data-binding/data-binding.component';
 import { ProdutoService } from './produtos/produtos.service';
-
+import { ListaProdutosComponent } from './produtos/lista-produtos/lista-produtos.component';
+import localePt from '@angular/common/locales/pt';
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -25,18 +28,21 @@ import { ProdutoService } from './produtos/produtos.service';
     SobreComponent,
     ContatoComponent,
     DataBindingComponent,
+    ListaProdutosComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    [RouterModule.forRoot(rootRouterConfig, { useHash: false}) ]
+    HttpClientModule,
+    [RouterModule.forRoot(rootRouterConfig, { useHash: false })]
   ],
   providers: [
     ProdutoService,
     {
-    provide: APP_BASE_HREF,
-    useValue: '/'  
-    }
+      provide: APP_BASE_HREF,
+      useValue: '/'
+    },
+    {provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' }
   ],
   bootstrap: [AppComponent]
 })
