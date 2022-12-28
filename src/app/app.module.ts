@@ -16,6 +16,7 @@ import { DataBindingComponent } from './demos/data-binding/data-binding.componen
 import { ProdutoService } from './produtos/produtos.service';
 import { ListaProdutosComponent } from './produtos/lista-produtos/lista-produtos.component';
 import localePt from '@angular/common/locales/pt';
+import { DetalheProdutoComponent } from './produtos/detalhe-produto/detalhe-produto.component';
 registerLocaleData(localePt);
 
 @NgModule({
@@ -29,6 +30,7 @@ registerLocaleData(localePt);
     ContatoComponent,
     DataBindingComponent,
     ListaProdutosComponent,
+    DetalheProdutoComponent,
   ],
   imports: [
     BrowserModule,

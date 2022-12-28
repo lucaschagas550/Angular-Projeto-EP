@@ -1,0 +1,35 @@
+<div class="container main-container row g-0">
+    <div class="row text-center">
+        <div class="col-md-8">
+            <img src="/assets/{{ produto.imagem }}" class="img-thumbnail" alt="...">
+        </div>
+        <div class="col-md-4">
+            <h5 class="card-title">{{ produto.nome }}</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content.
+                This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+            <div *ngIf="produto.promocao; else textoSemPromocao">
+                <p>Promoção!</p>
+            </div>
+
+            <div *ngIf="produto.promocao; else valorSemPromocao">
+                <h4 class="card-text">De:
+                    <small><del>{{ produto.valor | currency}}</del></small>
+                    Por: {{ produto.valorPromo | currency}}
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #textoSemPromocao>
+    <p>Por apenas:</p>
+</ng-template>
+
+<ng-template #valorSemPromocao>
+    <div>
+        <h4>{{ produto.valor | currency}}</h4>
+    </div>
+</ng-template>
